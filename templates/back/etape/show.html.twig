@@ -1,0 +1,38 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Etape{% endblock %}
+
+{% block main %}
+    <h1>Etape</h1>
+
+    <table class="blueTable">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ etape.id }}</td>
+            </tr>
+            <tr>
+                <th>NumeroEtape</th>
+                <td>{{ etape.numeroEtape }}</td>
+            </tr>
+            <tr>
+                <th>VilleEtape</th>
+                <td>{{ etape.villeEtape }}</td>
+            </tr>
+            <tr>
+                <th>NombreJours</th>
+                <td>{{ etape.nombreJours }}</td>
+            </tr>
+                <tr>
+                <th>Url_image</th>
+                <td>{{ etape.urlImage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_etape_index') }}">back to list</a>
+
+    <a href="{{ path('admin_etape_edit', {'id': etape.id}) }}">edit</a>
+
+    {{ include('back/etape/_delete_form.html.twig') }}
+{% endblock %}

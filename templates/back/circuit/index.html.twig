@@ -1,0 +1,44 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Circuit index{% endblock %}
+
+{% block main %}
+    <h1 style="text-align: center;">Liste des circuits</h1>
+<table class="blueTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>PaysDepart</th>
+                <th>VilleDepart</th>
+                <th>VilleArrivee</th>
+                <th>DureeCircuit</th>
+                <th>Url_image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for circuit in circuits %}
+            <tr>
+                <td>{{ circuit.id }}</td>
+                <td style="width:20%;">{{ circuit.description }}</td>
+                <td>{{ circuit.paysDepart }}</td>
+                <td>{{ circuit.villeDepart }}</td>
+                <td>{{ circuit.villeArrivee }}</td>
+                <td>{{ circuit.dureeCircuit }}</td>
+                <td style="width:10%; overflow:hidden; white-space: nowrap;"><a href="{{circuit.urlImage}}">{{ circuit.urlImage }}</a></td>
+                <td >
+                    <a href="{{ path('admin_circuit_show', {'id': circuit.id}) }}" class="btn btn-success">show</a>
+                    <a href="{{ path('admin_circuit_edit', {'id': circuit.id}) }}" class="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('admin_circuit_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{{ form_start(form) }}
+
+ {{ form_row(form.description) }}
+ {{ form_row (form.paysDepart)}}
+ {{ form_row (form.villeDepart)}}
+ {{ form_row (form.villeArrivee)}}
+ {{ form_row (form.dureeCircuit)}}
+ {{ form_row (form.url_image)}}
+
+
+
+<h3 style="text-align: center;">Etapes du circuit</h3>
+<ul class="etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
+
+        {# passer en revue chaque todo existante pour afficher ses champs #}
+        {% for etape in form.etapes %}
+                <li>{{ form_row(etape.numeroEtape) }} - 
+                {{ form_row(etape.villeEtape) }} - 
+                {{  form_row(etape.url_image) }} -
+                {{ form_row(etape.nombreJours) }}
+                </li>
+                <br> <hr> <br>
+        {% endfor %}
+    </ul>
+
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,13 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Edit ProgrammationCircuit{% endblock %}
+
+{% block main %}
+    <h1>Edit ProgrammationCircuit</h1>
+
+    {{ include('back/programmation_circuit/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_programmation_circuit_index') }}">back to list</a>
+
+    {{ include('back/programmation_circuit/_delete_form.html.twig') }}
+{% endblock %}

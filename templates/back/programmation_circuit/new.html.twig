@@ -1,0 +1,11 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New ProgrammationCircuit{% endblock %}
+
+{% block main %}
+    <h1>Create new ProgrammationCircuit</h1>
+
+    {{ include('back/programmation_circuit/_form.html.twig') }}
+
+    <a href="{{ path('admin_programmation_circuit_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Circuits Programmés{% endblock %}
+{% block stylesheets %}<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+{% endblock %}
+{% block main %}
+    <h1 style="text-align:center; margin-bottom: 5%;padding-top:5%;font-family: 'Roboto Condensed', sans-serif;">Nos circuits programmés</h1>
+
+        {% for circuit in circuitsProgrammes %}
+            <div class="row circuit_pres" style="
+	background: url('{{ circuit.circuit.url_image }}'); 
+	background-repeat: no-repeat;
+    background-size: auto;
+    background-size: 100% 100%;">
+    <div class="caption">
+        <h3 class="titre_circuit">{{ circuit.circuit.paysDepart }} le {{ circuit.dateDepart|date('d/m/Y')  }}</h3>
+    </div>
+    <div class="bot2"> <p>{{ circuit.circuit.description }}</p></div>
+      <div class="boutons">
+        <a href="{{ path('front_circuit_show', {id: circuit.id}) }}" class="btn btn-primary" role="button">En savoir plus!</a> 
+       {% if circuit.circuit.id in likes %}       
+        <a href="/likes/{{ circuit.circuit.id }}" class="btn btn-danger" role="button">Retirer des favoris</a>
+      {% else %}
+      <a href="/likes/{{ circuit.circuit.id }}" class="btn btn-success" role="button">Ajouter aux favoris</a>
+      {% endif %}</div>
+
+</div>
+        {% else %}
+                <h1 style="text-align:center; margin-bottom: 5%;padding-top:5%;font-family: 'Roboto Condensed', sans-serif;">no circuits found</h1>
+</div>
+        {% endfor %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+          {% if cnp is defined %}
+         <h1 style="text-align:center; margin-bottom: 5%;padding-top:5%;font-family: 'Roboto Condensed', sans-serif;">Nos circuits non programmés</h1> 
+         
+       {% for circuit in cnp %}
+            <div class="row circuit_pres" style="
+  background: url('{{ circuit.url_image }}'); 
+  background-repeat: no-repeat;
+    background-size: auto;
+    background-size: 100% 100%;">
+    <div class="caption">
+        <h3 class="titre_circuit">{{ circuit.paysDepart }}</h3>
+    </div>
+    <div class="bot2"> <p>{{ circuit.description }}</p></div>
+      <div class="boutons">
+        <a href="{{ path('front_circuitnp_show', {id: circuit.id}) }}" class="btn btn-primary" role="button">En savoir plus!</a> 
+       {% if circuit.id in likes %}       
+        <a href="/likes/{{ circuit.id }}" class="btn btn-danger" role="button">Retirer des favoris</a>
+      {% else %}
+      <a href="/likes/{{ circuit.id }}" class="btn btn-success" role="button">Ajouter aux favoris</a>
+      {% endif %}</div>
+
+</div>
+</div>
+        {% endfor %}
+
+        {% else %}
+        <h1 style="text-align:center; margin-bottom: 5%;padding-top:5%;font-family: 'Roboto Condensed', sans-serif;">Tous les circuits sont programmés.</h1>
+        {% endif %}
+
+        {% endif %}
+        
+{% endblock %} {# main #}

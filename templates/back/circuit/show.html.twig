@@ -1,0 +1,82 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Circuit{% endblock %}
+
+{% block main %}
+    <h1>Circuit</h1>
+    <table class="blueTable">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ circuit.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ circuit.description }}</td>
+            </tr>
+            <tr>
+                <th>PaysDepart</th>
+                <td>{{ circuit.paysDepart }}</td>
+            </tr>
+            <tr>
+                <th>VilleDepart</th>
+                <td>{{ circuit.villeDepart }}</td>
+            </tr>
+            <tr>
+                <th>VilleArrivee</th>
+                <td>{{ circuit.villeArrivee }}</td>
+            </tr>
+            <tr>
+                <th>DureeCircuit</th>
+                <td>{{ circuit.dureeCircuit }}</td>
+            </tr>
+            <tr>
+                <th>Url_image</th>
+                <td>{{ circuit.urlImage }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+          <h1>Etapes du circuit</h1>
+          
+     <table class="blueTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NumeroEtape</th>
+                <th>VilleEtape</th>
+                <th>NombreJours</th>
+                <th>Url_image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etape in etapes %}
+            <tr>
+                <td style="width:5%;">{{ etape.id }}</td>
+                <td style="width:5%;">{{ etape.numeroEtape }}</td>
+                <td style="width:20%; ">{{ etape.villeEtape }}</td>
+                <td style="width:20%;">{{ etape.nombreJours }}</td>
+                <td style="width:10%; overflow:hidden; white-space: nowrap;"><a href="{{etape.urlImage}}">{{ etape.urlImage }}</a></td>
+                <td>
+                    <div class="bts">
+                    <a href="{{ path('admin_etape_show', {'id': etape.id}) }}" class="btn btn-success">show</a>
+                    <a href="{{ path('admin_etape_edit', {'id': etape.id}) }}" class="btn btn-warning">edit</a>
+                </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a class="btn btn-secondary" href="{{ path('admin_circuit_index') }}">back to list</a>
+
+    <a class="btn btn-warning"  href="{{ path('admin_circuit_edit', {'id': circuit.id}) }}">edit</a>
+
+    {{ include('back/circuit/_delete_form.html.twig') }}
+{% endblock %}

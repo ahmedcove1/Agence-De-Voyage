@@ -1,0 +1,11 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+
+{% block main %}
+    <h1>Create new Reservation</h1>
+
+    {{ include('reservation/_form.html.twig') }}
+
+    <a href="{{ path('frontoffice_home') }}">back </a>
+{% endblock %}

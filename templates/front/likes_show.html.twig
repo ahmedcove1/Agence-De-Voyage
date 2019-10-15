@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+{% block title %} Mes favorites {% endblock %}
+{% block stylesheets %}<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+{% endblock %}
+{% block main %}
+    <h1 style="text-align:center; margin-bottom: 5%;padding-top:5%;font-family: 'Roboto Condensed', sans-serif;">Vos circuits préférés</h1>
+      {% if circuits is not empty %}
+
+        {% for circuit in circuits %}
+            <div class="row circuit_pres" style="
+	background: url('{{ circuit.getUrlImage() }}');
+	background-repeat: no-repeat;
+    background-size: auto;
+    background-size: 100% 100%;">
+    <div class="caption">
+        <h3 class="titre_circuit">{{ circuit.getPaysDepart() }} </h3>
+    </div>
+    <div class="bot2"> <p>{{ circuit.getDescription }}</p></div>
+      <div class="boutons">
+
+    <center>    <a href="/likes/{{ circuit.getId() }}"  class="btn btn-danger" role="button">Retirer des favoris</a>
+</center>
+
+    </div>
+
+</div>
+{% endfor %}
+        {% else %}
+                <h1 style="text-align:center; margin-bottom: 5%;padding-top:5%;font-family: 'Roboto Condensed', sans-serif;">no circuits found</h1>
+</div>
+
+{%endif%}
+
+
+
+{% endblock %} {# main #}

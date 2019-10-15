@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/base_style.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.min.js"></script>
+
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}
+             <header>
+     <div class="jumbotron hdjb">
+  <h1>Bienvenue dans le site de l'agence de voyage!</h1>
+  <p>Retrouvez notre catalogue de circuits afin de profiter des meilleures vacances!</p>
+  <p><a class="btn btn-primary btn-lg" href="{{ path('about') }}" role="button">J'y vole!</a></p>
+</div>
+		{% block menu %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+        	{{ knp_menu_render('main', {'currentClass': 'active'}) }}
+					{{ knp_menu_render('user', {'currentClass': 'active'}) }}
+</nav>
+
+
+
+		{% endblock %} {# menu #}
+             </header>
+
+
+		<div class="container body-container">
+<main>
+			{% block main %}
+				<div style="min-height: 90%" class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div>
+					Agence de voyage!
+				</div>
+
+			</div>
+		</div>
+		</div>
+		</main>
+		{% endblock %}
+		</div>
+		{% block footer %}
+		<!-- Footer -->
+<footer class="page-footer font-small unique-color-dark" style="background-color: white;">
+
+    <div style="background-color:#636d7c;">
+      <div class="container" >
+
+        <!-- Grid row-->
+        <div class="row py-4 d-flex align-items-center">
+
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+            <h6 class="mb-0">Merci d'avoir pris le temps de visiter notre site web!</h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+         
+
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+
+      </div>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5" >
+
+      <!-- Grid row -->
+      <div class="row mt-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+          <!-- Content -->
+          <h6 class="text-uppercase font-weight-bold"><center>Agence de Voyage AB (Attia/Bahri)</center> </h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" >
+          <p>
+
+Grâce à son réseau de 42 Agences de Voyages, notre agence est proche de vous, dans votre région !
+</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Contact</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <i class="fa fa-home mr-3"></i> TELECOM SUDPARIS</p>
+          <p>
+            <i class="fa fa-envelope mr-6"></i>malek.attia@telecom-sudparis.eu</p>
+            <p>
+              <i class="fa fa-envelope mr-6"></i>ahmed.bahri@telecom-sudparis.eu</p>
+          <p>
+            <i class="fa fa-phone mr-3"></i> 06 06 06 06 08</p>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+		{% endblock %}{# footer #}
+<!-- Footer -->
+	<!-- /.container -->
+	{% endblock %} {# body #}
+</body>
+	{% block javascripts %}
+	  <script>
+document.querySelector("#Bouton").onclick = function() {
+if (window.getComputedStyle(document.querySelector('#tonDiv')).display=='none'){
+document.querySelector("#tonDiv").style.display="block";
+} else {
+document.querySelector("#tonDiv").style.display="none";
+}
+}
+</script>
+<script	src="/js/jquery-3.3.1.js"></script>
+<script src="/js/popper.js"></script>
+<script	src="/js/bootstrap.js"></script>
+	{% endblock %} {# javascripts #}
+	{% block custompage_script %}
+    {% endblock %} {# custompage_scripts #}
+</html>

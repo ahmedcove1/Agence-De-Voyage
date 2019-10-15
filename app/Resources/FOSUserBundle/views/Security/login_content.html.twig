@@ -1,0 +1,42 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+<div class="limiter">
+        <div class="container-login100" style="background-image: url('/bg-01.jpg');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="{{ path("fos_user_security_check") }}" method="post">
+                    <span class="login100-form-logo">
+                        <i class="zmdi zmdi-landscape"></i>
+                    </span>
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                       <!-- <label for="username">{{ 'security.login.username'|trans }}</label> -->
+                        <input class="input100" type="text" id="username" name="_username" value="" required="required" autocomplete="username" >
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <!--<label for="password">{{ 'security.login.password'|trans }}</label> -->
+                        <input class="input100" type="password" id="password" name="_password" required="required" autocomplete="current-password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="_remember_me" value="on" >
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+<div class="container-login100-form-btn">
+    <input class="login100-form-btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+</div>
+
+</form>

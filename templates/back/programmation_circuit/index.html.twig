@@ -1,0 +1,41 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}ProgrammationCircuit index{% endblock %}
+
+{% block main %}
+    <h1>ProgrammationCircuit index</h1>
+
+    <table class="blueTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateDepart</th>
+                <th>NombrePersonnes</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programmation_circuit in programmation_circuits %}
+            <tr>
+                <td>{{ programmation_circuit.id }}</td>
+                <td>{{ programmation_circuit.dateDepart ? programmation_circuit.dateDepart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ programmation_circuit.nombrePersonnes }}</td>
+                <td>{{ programmation_circuit.prix }}</td>
+                <td>
+                    <div class="bts">
+                    <a href="{{ path('admin_programmation_circuit_show', {'id': programmation_circuit.id}) }}" class="btn btn-success">show</a>
+                    <a href="{{ path('admin_programmation_circuit_edit', {'id': programmation_circuit.id}) }}" class="btn btn-warning">edit</a>
+                </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_programmation_circuit_new') }}">Create new</a>
+{% endblock %}

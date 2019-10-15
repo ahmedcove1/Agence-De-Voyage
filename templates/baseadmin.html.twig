@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/base_style_admin.css">
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="/js/popper.js"></script>
+		<script	src="/js/bootstrap.js"></script>
+        <meta charset="UTF-8">
+        <title>{% block title %}Admin!{% endblock %}</title>
+        {% block stylesheets %}
+        {% endblock %}
+        
+    </head>
+    <body>
+        {% block body %}
+             <header>
+    {% block menu %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+        			 {{ knp_menu_render('admin', {'currentClass': 'active'}) }}
+</nav>
+</nav>
+    {% endblock %} {# menu #}
+             </header>
+
+
+    <div class="container body-container">
+<main>
+      {% block main %}
+        <div style="min-height: 90%" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div>
+          Agence de voyage!
+        </div>
+
+      </div>
+    </div>
+      {% endblock %} {# main #}
+</main>
+    </div> <!-- /.body-container -->
+    {% block footer %}
+    <div class="row">
+      <div class="col-md-12">
+        <footer>
+          <p>Projet Agvoy - CS 4101 </p>
+        </footer>
+      </div>
+    </div>
+    {% endblock %}{# footer #}
+
+  </div>
+  <!-- /.container -->
+  {% endblock %} {# body #}
+</body>
+  {% block javascripts %}
+  {% endblock %} {# javascripts #}
+  {% block custompage_script %}
+    {% endblock %} {# custompage_scripts #}
+</html>

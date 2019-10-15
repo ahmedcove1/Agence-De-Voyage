@@ -1,0 +1,13 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Edit Etape{% endblock %}
+
+{% block main %}
+    <h1>Edit Etape</h1>
+
+    {{ include('back/etape/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_etape_index') }}">back to list</a>
+
+    {{ include('back/etape/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Etape index{% endblock %}
+
+{% block main %}
+    <h1>Etape index</h1>
+
+    <table class="blueTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NumeroEtape</th>
+                <th>VilleEtape</th>
+                <th>NombreJours</th>
+                <th>Url_image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etape in etapes %}
+            <tr>
+                <td style="width:5%;">{{ etape.id }}</td>
+                <td style="width:5%;">{{ etape.numeroEtape }}</td>
+                <td style="width:20%; ">{{ etape.villeEtape }}</td>
+                <td style="width:20%;">{{ etape.nombreJours }}</td>
+                <td style="width:10%; overflow:hidden; white-space: nowrap;"><a href="{{etape.urlImage}}">{{ etape.urlImage }}</a></td>
+                <td>
+                    <div class="bts">
+                    <a href="{{ path('admin_etape_show', {'id': etape.id}) }}" class="btn btn-success">show</a>
+                    <a href="{{ path('admin_etape_edit', {'id': etape.id}) }}" class="btn btn-warning">edit</a>
+                </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
